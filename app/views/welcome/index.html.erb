@@ -1,0 +1,46 @@
+<h1>您的用户信息</h1>
+
+
+<p>
+  本次获取code：<br>
+  <%= @code %>
+</p>
+
+<p>
+  本次获取access_token：<br>
+  <%= @access_token %>
+</p>
+
+<p>
+  用户ID：<br>
+  <%= @user_openid %>
+</p>
+
+<% if @user_headimgurl.present? %>
+  <%= image_tag @user_headimgurl, size: "50" %>
+<% end %>
+
+<p>
+  用户名：
+  <%= @user_name %>
+</p>
+<p>
+  性别：
+  <% case @user_sex %>
+  <% when 1 %>
+    男
+  <% when 2 %>
+    女
+  <% when 0 %>
+    未知
+  <% end %>
+</p>
+<p>
+  城市：<%= @user_city %>
+</p>
+<p>
+  国家：<%= @user_country %>
+</p>
+
+<%= link_to "获取用户信息",
+    url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8dbaac30fa2befc4&redirect_uri=http://0994e126.ngrok.io&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"%>
